@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Left Menu with Iframe</title>
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      font-family: Arial, sans-serif;
+    }
+    .menu {
+      width: 200px;
+      background: black;
+      color: white;
+      height: 100vh;
+      padding: 20px;
+    }
+    .menu a {
+      color: white;
+      display: block;
+      margin: 10px 0;
+      text-decoration: none;
+    }
+    .content {
+      flex: 1;
+      padding: 20px;
+      background: #f2f2f2;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="menu">
+    <h3>Menu</h3>
+    <a href="fav1.html" target="contentFrame">fav1</a>
+    <a href="intro.html" target="contentFrame">intro</a>
+    <a href="form.html" target="contentFrame">form</a>
+    <a href="audio.html" target="contentFrame">audio</a>
+  </div>
+
+  <div class="content">
+    <iframe name="contentFrame" width="100%" height="500px" style="border: none;"></iframe>
+  </div>
+
+</body>
+</html>

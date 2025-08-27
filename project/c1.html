@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz Format</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .correct { color: green; font-weight: bold; }
+        .wrong { color: red; font-weight: bold; }
+    </style>
+</head>
+<body class="p-4">
+    <h2>C Programming Quiz</h2>
+
+    <form id="quizForm">
+        <fieldset>
+            <legend>1. What will be the output of the following C code?</legend>
+            <pre>#include &lt;stdio.h&gt;
+int main() {
+    int a = 5;
+    printf("%d", a);
+    return 0;
+}</pre>
+            <input type="radio" name="q1" value="0"> 0<br>
+            <input type="radio" name="q1" value="5"> 5<br>
+            <input type="radio" name="q1" value="Error"> Error<br>
+        </fieldset><br>
+
+        <fieldset>
+            <legend>2. What will be the output of this code?</legend>
+            <pre>#include &lt;stdio.h&gt;
+int main() {
+    int x = 10, y = 3;
+    printf("%d", x % y);
+    return 0;
+}</pre>
+            <input type="radio" name="q2" value="3"> 3<br>
+            <input type="radio" name="q2" value="0"> 0<br>
+            <input type="radio" name="q2" value="1"> 1<br>
+        </fieldset><br>
+
+        <fieldset>
+            <legend>3. Output of the following code?</legend>
+            <pre>#include &lt;stdio.h&gt;
+int main() {
+    printf("%d", sizeof(char));
+    return 0;
+}</pre>
+            <input type="radio" name="q3" value="3"> 3<br>
+            <input type="radio" name="q3" value="1"> 1<br>
+            <input type="radio" name="q3" value="depend on system"> Depend on system<br>
+        </fieldset><br>
+
+        <fieldset>
+            <legend>4. Output of this code?</legend>
+            <pre>#include &lt;stdio.h&gt;
+int main() {
+    int a = 10, b = 3;
+    printf("%d", a / b);
+    return 0;
+}</pre>
+            <input type="radio" name="q4" value="3"> 3<br>
+            <input type="radio" name="q4" value="1"> 1<br>
+            <input type="radio" name="q4" value="3.33"> 3.33<br>
+        </fieldset><br>
+
+        <fieldset>
+            <legend>5. What is the output of this line?</legend>
+            <pre>printf("%d", 4 + 5 * 2);</pre>
+            <input type="radio" name="q5" value="18"> 18<br>
+            <input type="radio" name="q5" value="14"> 14<br>
+            <input type="radio" name="q5" value="13"> 13<br>
+        </fieldset><br>
+
+        <button type="button" class="btn btn-success" onclick="checkAnswers()">Submit</button>
+    </form>
+
+    <div id="result" class="mt-4 fs-4"></div>
+
+    <script>
+        function checkAnswers() {
+            const answers = {
+                q1: "5",
+                q2: "1",
+                q3: "1",
+                q4: "3",
+                q5: "14"
+            };
+
+            let score = 0;
+            let total = Object.keys(answers).length;
+            let resultHTML = "";
+
+            for (let q in answers) {
+                let selected = document.querySelector(`input[name="${q}"]:checked`);
+                if (selected) {
+                    if (selected.value === answers[q]) {
+                        resultHTML += `<p>${q.toUpperCase()}: <span class="correct">Correct ✔️</span></p>`;
+                        score++;
+                    } else {
+                        resultHTML += `<p>${q.toUpperCase()}: <span class="wrong">Wrong ✘</span> (Correct: <b>${answers[q]}</b>)</p>`;
+                    }
+                } else {
+                    resultHTML += `<p>${q.toUpperCase()}: <span class="wrong">Not Answered ✘</span> (Correct: <b>${answers[q]}</b>)</p>`;
+                }
+            }
+
+            resultHTML += `<hr><h4>Your Score: ${score} / ${total}</h4>`;
+            document.getElementById("result").innerHTML = resultHTML;
+        }
+    </script>
+</body>
+</html>

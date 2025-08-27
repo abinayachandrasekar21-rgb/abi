@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>HTML Quiz</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .correct-answer {
+      color: green;
+      font-weight: bold;
+    }
+    .your-answer-wrong {
+      color: red;
+      font-weight: bold;
+    }
+    .score-box {
+      font-size: 22px;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body class="p-4">
+
+  <h2>HTML Basics Quiz</h2>
+
+  <form id="quizForm">
+    <!-- Question 1 -->
+    <fieldset>
+      <legend>1. What does HTML stand for?</legend>
+      <input type="radio" id="q1a" name="q1" value="a">
+      <label for="q1a">Hyper Text Markup Language</label><br>
+      <input type="radio" id="q1b" name="q1" value="b">
+      <label for="q1b">Hyper Text Marketing Language</label><br>
+      <input type="radio" id="q1c" name="q1" value="c">
+      <label for="q1c">Hyper Tool Markup Language</label><br>
+      <div id="ans1"></div>
+    </fieldset><br>
+
+    <!-- Question 2 -->
+    <fieldset>
+      <legend>2. Which tag is used to create a hyperlink in HTML?</legend>
+      <input type="radio" id="q2a" name="q2" value="a">
+      <label for="q2a">&lt;href&gt;</label><br>
+      <input type="radio" id="q2b" name="q2" value="b">
+      <label for="q2b">&lt;a&gt;</label><br>
+      <input type="radio" id="q2c" name="q2" value="c">
+      <label for="q2c">&lt;url&gt;</label><br>
+      <div id="ans2"></div>
+    </fieldset><br>
+
+    <!-- Question 3 -->
+    <fieldset>
+      <legend>3. What is the correct HTML element for inserting a line break?</legend>
+      <input type="radio" id="q3a" name="q3" value="a">
+      <label for="q3a">&lt;break&gt;</label><br>
+      <input type="radio" id="q3b" name="q3" value="b">
+      <label for="q3b">&lt;br&gt;</label><br>
+      <input type="radio" id="q3c" name="q3" value="c">
+      <label for="q3c">&lt;line&gt;</label><br>
+      <div id="ans3"></div>
+    </fieldset><br>
+
+    <!-- Question 4 -->
+    <fieldset>
+      <legend>4. Which tag is used to display an image in HTML?</legend>
+      <input type="radio" id="q4a" name="q4" value="a">
+      <label for="q4a">&lt;img&gt;</label><br>
+      <input type="radio" id="q4b" name="q4" value="b">
+      <label for="q4b">&lt;image&gt;</label><br>
+      <input type="radio" id="q4c" name="q4" value="c">
+      <label for="q4c">&lt;pic&gt;</label><br>
+      <div id="ans4"></div>
+    </fieldset><br>
+
+    <!-- Question 5 -->
+    <fieldset>
+      <legend>5. Which tag is used to define the largest heading in HTML?</legend>
+      <input type="radio" id="q5a" name="q5" value="a">
+      <label for="q5a">&lt;h1&gt;</label><br>
+      <input type="radio" id="q5b" name="q5" value="b">
+      <label for="q5b">&lt;h6&gt;</label><br>
+      <input type="radio" id="q5c" name="q5" value="c">
+      <label for="q5c">&lt;head&gt;</label><br>
+      <div id="ans5"></div>
+    </fieldset><br>
+
+    <button type="button" class="btn btn-success" onclick="checkAnswers()">Submit</button>
+  </form>
+
+  <div id="scoreDisplay" class="score-box text-primary"></div>
+
+  <script>
+    function checkAnswers() {
+      const correctAnswers = {
+        q1: "a", // Hyper Text Markup Language
+        q2: "b", // <a>
+        q3: "b", // <br>
+        q4: "a", // <img>
+        q5: "a"  // <h1>
+      };
+
+      let score = 0;
+
+      for (let i = 1; i <= 5; i++) {
+        const questionKey = "q" + i;
+        const selected = document.querySelector(`input[name="${questionKey}"]:checked`);
+        const answerDiv = document.getElementById(`ans${i}`);
+        answerDiv.innerHTML = ""; // Clear old message
+
+        if (!selected) {
+          answerDiv.innerHTML = `<span class="your-answer-wrong">❌ You did not select an answer. </span>
+                                 <span class="correct-answer">Correct: ${getCorrectText(i, correctAnswers[questionKey])}</span>`;
+        } else if (selected.value === correctAnswers[questionKey]) {
+          answerDiv.innerHTML = `<span class="correct-answer">✅ Correct!</span>`;
+          score++;
+        } else {
+          answerDiv.innerHTML = `<span class="your-answer-wrong">❌ Wrong. </span>
+                                 <span class="correct-answer">Correct: ${getCorrectText(i, correctAnswers[questionKey])}</span>`;
+        }
+      }
+
+      // Display score
+      document.getElementById("scoreDisplay").innerText = `Your Score: ${score} / 5`;
+    }
+
+    function getCorrectText(qNum, key) {
+      const labelId = `q${qNum}${key}`;
+      const label = document.querySelector(`label[for="${labelId}"]`);
+      return label ? label.innerText : "Not found";
+    }
+  </script>
+
+</body>
+</html>

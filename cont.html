@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>left menu and right content</title>
+<style>
+<body> {
+margin:0;
+display:flex;
+font-family:arial,sans-serif;
+}
+.menu{
+width:200px;
+background:#333;
+colour:white;
+height:100vh;
+padding:20px;
+}
+.menu a{
+colour:white;
+display:block;
+margin:10px 0;
+text-decoration:none;
+}
+.content{
+flex:1;
+padding:20 px;
+background:#f2f2f2;
+}
+</style>
+</head>
+<body>
+<div class="menu">
+<h3>Menu</h3>
+< a href="fav1.html" target="contentframe">Fav1</a>
+< a href="form.html" target="contentframe">Form</a>
+< a href="intro.html" target="contentframe">intro</a>
+< a href="audio.html" target="contentframe">audio</a>
+</div>
+<div class="content">
+<iframe name="contentframe" width="100%" height="500px" style="border:none;"></iframe>
+</div>
+</body>
+</html>
+
+
+
+
+

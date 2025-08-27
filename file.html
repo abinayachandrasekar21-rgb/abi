@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Side Menu Layout</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+        .menu {
+            width: 200px;
+            background-color: #333;
+            color: white;
+            padding: 20px;
+        }
+        .menu a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 10px 0;
+        }
+        .menu a:hover {
+            background-color: #575757;
+        }
+        .content {
+            flex: 1;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="menu">
+        <h3>Menu</h3>
+        <a href="#"fav1.html target="content frame ">fav1</a>
+        <a href="#">ordlst.html target="content frame ">ordlst</a>
+        <a href="#">audio.html  target="content frame ">audio</a>
+        <a href="#">form.html target="content frame ">form  </a>
+    </div>
+    <div class="content">
+        <h2>Welcome!</h2>
+        <p>This is your content area on the right side of the menu.</p>
+    </div>
+</div>
+
+</body>
+</html>

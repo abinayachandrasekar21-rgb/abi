@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JavaScript Quiz</title>
+</head>
+<body>
+
+<h2>1. What is the correct way to declare a variable in JavaScript?</h2>
+<form id="quizForm">
+  <input type="radio" name="q1" value="A"> A) variable x = 10;<br>
+  <input type="radio" name="q1" value="B"> B) v x = 10;<br>
+  <input type="radio" name="q1" value="C"> C) let x = 10;<br>
+  <input type="radio" name="q1" value="D"> D) def x = 10;<br><br>
+
+  <button type="button" onclick="checkAnswer()">Check Answer</button>
+</form>
+
+<p id="result"></p>
+
+<script>
+function checkAnswer() {
+  const form = document.getElementById("quizForm");
+  const answer = form.q1.value;
+
+  if (answer === "C") {
+    document.getElementById("result").innerText = "✅ Correct!";
+    document.getElementById("result").style.color = "green";
+  } else if (answer === "") {
+    document.getElementById("result").innerText = "❗ Please select an option.";
+    document.getElementById("result").style.color = "orange";
+  } else {
+    document.getElementById("result").innerText = "❌ Incorrect. The correct answer is C.";
+    document.getElementById("result").style.color = "red";
+  }
+}
+</script>
+
+</body>
+</html>
